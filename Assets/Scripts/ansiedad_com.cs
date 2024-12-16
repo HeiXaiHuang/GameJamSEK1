@@ -41,8 +41,7 @@ public class AnxietyBar : MonoBehaviour
     {
         isFilling = true;
     }
-
-    // Llamar a este método para reducir ansiedad (opcional)
+        // Llamar a este método para reducir ansiedad (opcional)
     public void DecreaseAnxiety(float amount)
     {
         currentAnxiety -= amount;
