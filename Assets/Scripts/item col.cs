@@ -32,5 +32,10 @@ public class AnxietyReducer : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("El jugador ha interactuado y la ansiedad ha bajado.");
         }
+        if (other.CompareTag("objective"))
+        {
+            
+            Destroy(other.gameObject);
+        }
     }
 }
