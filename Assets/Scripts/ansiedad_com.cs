@@ -19,13 +19,32 @@ public class AnxietyBar : MonoBehaviour
             anxietySlider.value = currentAnxiety;
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the other GameObject has the desired tag
+        if (other.gameObject.CompareTag("people"))
+        {
+            isFilling = true; 
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("people"))
+        {
+            Debug.Log("GameObject with tag 'YourTagHere' exited the trigger!");
+            // Perform any action when the GameObject leaves the trigger
+            isFilling = false;
+        }
+    }
     void Update()
     {
         // Lógica para llenar la barra lentamente
+        if (isFilling == true)
+        {
+            currentAnxiety += fillSpeed * Time.deltaTime;
+            anxietySlider.value = currentAnxiety;
+        }
         
-        currentAnxiety += fillSpeed * Time.deltaTime;
-        anxietySlider.value = currentAnxiety;
         
 
         // Si la barra está llena, detén el llenado
@@ -35,18 +54,11 @@ public class AnxietyBar : MonoBehaviour
             Debug.Log("¡La ansiedad está al máximo!");
         }
     }
+}
+
+
 
     // Llamar a este método para iniciar el llenado de la barra
-    public void StartFilling()
-    {
-        isFilling = true;
-    }
-
-    // Llamar a este método para reducir ansiedad (opcional)
-    public void DecreaseAnxiety(float amount)
-    {
-        currentAnxiety -= amount;
-        if (currentAnxiety < 0) currentAnxiety = 0;
-        anxietySlider.value = currentAnxiety;
-    }
-}
+    
+        // Llamar a este método para reducir ansiedad (opcional)
+    
