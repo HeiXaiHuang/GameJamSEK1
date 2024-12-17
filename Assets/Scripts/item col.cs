@@ -40,5 +40,10 @@ public class AnxietyReducer : MonoBehaviour
             ReduceAnxiety();
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("objective"))
+        {
+            
+            Destroy(other.gameObject);
+        }
     }
 }
