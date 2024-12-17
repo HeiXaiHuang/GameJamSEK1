@@ -15,8 +15,6 @@ public class AnxietyReducer : MonoBehaviour
         }
     }
 
-    
-
     public void ReduceAnxiety()
     {
         if (anxietyBar != null)
@@ -42,7 +40,6 @@ public class AnxietyReducer : MonoBehaviour
         }
         if (other.CompareTag("objective"))
         {
-            
             Destroy(other.gameObject);
         }
     }
