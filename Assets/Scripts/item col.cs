@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class AnxietyReducer : MonoBehaviour
 {
     public AnxietyBar anxietyBar; 
-    public float reduceAmount = 20f; 
+    public float reduceAmount = 20f;
+    public GameObject showText;
 
     void Start()
     {
@@ -20,8 +22,15 @@ public class AnxietyReducer : MonoBehaviour
         if (anxietyBar != null)
         {
             anxietyBar.DecreaseAnxiety(reduceAmount);
-            Debug.Log("Ansiedad reducida en: " + reduceAmount);
+            showText.SetActive(true);
+            StartCoroutine(HideShowTextAfterDelay());
         }
+    }
+    private IEnumerator HideShowTextAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        showText.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +39,6 @@ public class AnxietyReducer : MonoBehaviour
         {
             ReduceAnxiety();
             Destroy(other.gameObject);
-            Debug.Log("El jugador ha interactuado y la ansiedad ha bajado.");
         }
     }
 }

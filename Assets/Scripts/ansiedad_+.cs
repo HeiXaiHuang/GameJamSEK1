@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AnxietyBar : MonoBehaviour
 {
     public Slider anxietySlider; 
     public float fillSpeed = 10f; 
     public float maxAnxiety = 100f; 
-    private float currentAnxiety = 0f; 
+    private float currentAnxiety = 0f;
+    public GameObject showText;
 
     private bool isFilling = false; 
 
@@ -29,8 +31,9 @@ public class AnxietyBar : MonoBehaviour
     {
         if (other.gameObject.CompareTag("people"))
         {
-            Debug.Log("GameObject with tag 'YourTagHere' exited the trigger!");
+            showText.SetActive(false);
             isFilling = false;
+
         }
     }
     void Update()
@@ -39,12 +42,13 @@ public class AnxietyBar : MonoBehaviour
         {
             currentAnxiety += fillSpeed * Time.deltaTime;
             anxietySlider.value = currentAnxiety;
+            showText.SetActive(true);
         }
         
         if (currentAnxiety >= maxAnxiety)
         {
             isFilling = false;
-            Debug.Log("¡La ansiedad está al máximo!");
+            Debug.Log("¡La ansiedad est?al máximo!");
         }
     }
     public void DecreaseAnxiety(float amount)
