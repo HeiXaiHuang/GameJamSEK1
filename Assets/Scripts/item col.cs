@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class AnxietyReducer : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class AnxietyReducer : MonoBehaviour
         if (other.CompareTag("objective"))
         {
             Destroy(other.gameObject);
+
+            SceneManager.LoadScene("win");
+
         }
     }
 }
