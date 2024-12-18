@@ -3828,6 +3828,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 417513430}
     - target: {fileID: 6761129518988272725, guid: b914331deb356a8438d2123450d4b34a, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 832575518}
+    - target: {fileID: 6761129518988272725, guid: b914331deb356a8438d2123450d4b34a, type: 3}
       propertyPath: anxietySlider
       value: 
       objectReference: {fileID: 1976466967}
