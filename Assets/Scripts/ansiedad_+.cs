@@ -3,6 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine;
+using UnityEngine.SceneManagement; // Necesario para manejar escenas
+
+
+    // Método para cambiar a una escena específica por su nombre
+    
+
 
 public class AnxietyBar : MonoBehaviour
 {
@@ -13,7 +20,16 @@ public class AnxietyBar : MonoBehaviour
     public GameObject showText;
 
     private bool isFilling = false;
+    public void ChangeSceneByName(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 
+    // Método para cambiar a una escena específica por su índice en el Build Settings
+    public void ChangeSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
     // Post-processing variables
     public Volume globalVolume; // Arrastra aquí el Global Volume desde el Inspector
     private ChromaticAberration chromaticAberration;
@@ -71,6 +87,18 @@ public class AnxietyBar : MonoBehaviour
         {
             isFilling = false;
             Debug.Log("¡La ansiedad está al máximo!");
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 
@@ -107,4 +135,5 @@ public class AnxietyBar : MonoBehaviour
             vignette.intensity.value = Mathf.Lerp(0.2f, 0.8f, anxietyNormalized); // 0.2 a 0.8
         }
     }
+
 }
