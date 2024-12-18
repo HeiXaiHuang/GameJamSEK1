@@ -3,13 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para manejar escenas
-
-
-    // Método para cambiar a una escena específica por su nombre
-    
-
 
 public class AnxietyBar : MonoBehaviour
 {
@@ -20,21 +13,17 @@ public class AnxietyBar : MonoBehaviour
     public GameObject showText;
 
     private bool isFilling = false;
-    public void ChangeSceneByName(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
 
-    // Método para cambiar a una escena específica por su índice en el Build Settings
-    public void ChangeSceneByIndex(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
     // Post-processing variables
     public Volume globalVolume; // Arrastra aquí el Global Volume desde el Inspector
     private ChromaticAberration chromaticAberration;
     private FilmGrain filmGrain;
     private Vignette vignette;
+
+    // Efectos iniciales (para mantener y añadir sobre ellos)
+    private float initialChromaticAberration = 0f;
+    private float initialFilmGrain = 0f;
+    private float initialVignette = 0f;
 
     void Start()
     {
@@ -48,9 +37,20 @@ public class AnxietyBar : MonoBehaviour
         // Acceder a los overrides del Global Volume
         if (globalVolume != null)
         {
-            globalVolume.profile.TryGet(out chromaticAberration);
-            globalVolume.profile.TryGet(out filmGrain);
-            globalVolume.profile.TryGet(out vignette);
+            if (globalVolume.profile.TryGet(out chromaticAberration))
+            {
+                initialChromaticAberration = chromaticAberration.intensity.value;
+            }
+
+            if (globalVolume.profile.TryGet(out filmGrain))
+            {
+                initialFilmGrain = filmGrain.intensity.value;
+            }
+
+            if (globalVolume.profile.TryGet(out vignette))
+            {
+                initialVignette = vignette.intensity.value;
+            }
         }
     }
 
@@ -87,18 +87,6 @@ public class AnxietyBar : MonoBehaviour
         {
             isFilling = false;
             Debug.Log("¡La ansiedad está al máximo!");
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 
@@ -117,23 +105,34 @@ public class AnxietyBar : MonoBehaviour
         // Normalizar ansiedad a un rango de 0 a 1
         float anxietyNormalized = currentAnxiety / maxAnxiety;
 
-        // Ajustar Chromatic Aberration
+        // Ajustar Chromatic Aberration sin reiniciar los valores iniciales
         if (chromaticAberration != null)
         {
-            chromaticAberration.intensity.value = Mathf.Lerp(0f, 1f, anxietyNormalized); // 0 a 1
+            chromaticAberration.intensity.value = Mathf.Clamp(
+                initialChromaticAberration + Mathf.Lerp(0f, 1f, anxietyNormalized * 2f), // Incremento más agresivo
+                0f,
+                1f
+            );
         }
 
-        // Ajustar Film Grain
+        // Ajustar Film Grain sin reiniciar los valores iniciales
         if (filmGrain != null)
         {
-            filmGrain.intensity.value = Mathf.Lerp(0f, 1f, anxietyNormalized); // 0 a 1
+            filmGrain.intensity.value = Mathf.Clamp(
+                initialFilmGrain + Mathf.Lerp(0f, 1f, anxietyNormalized * 2f),
+                0f,
+                1f
+            );
         }
 
-        // Ajustar Vignette
+        // Ajustar Vignette sin reiniciar los valores iniciales
         if (vignette != null)
         {
-            vignette.intensity.value = Mathf.Lerp(0.2f, 0.8f, anxietyNormalized); // 0.2 a 0.8
+            vignette.intensity.value = Mathf.Clamp(
+                initialVignette + Mathf.Lerp(0f, 0.8f, anxietyNormalized * 1.5f),
+                0f,
+                1f
+            );
         }
     }
-
 }
