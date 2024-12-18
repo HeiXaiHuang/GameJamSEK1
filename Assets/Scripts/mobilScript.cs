@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MoveObject : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class MoveObject : MonoBehaviour
     public Transform endPoint;   // Posici¨®n final
     public float moveSpeed = 2f; // Velocidad del movimiento
     public GameObject Tuto;
+    public GameObject Subtitle;
 
 
     private bool isMoving = false; // Controla si el objeto est¨¢ movi¨¦ndose
@@ -20,6 +22,8 @@ public class MoveObject : MonoBehaviour
             Tuto.SetActive(false);
             isMoving = true; // Iniciar el movimiento
             t = 0;           // Reiniciar el progreso del movimiento
+            Subtitle.SetActive(true);
+            HideShowTextAfterDelay();
         }
 
         // Si el movimiento est¨¢ activo
@@ -41,5 +45,11 @@ public class MoveObject : MonoBehaviour
                 t = 0;                 // Reiniciar el valor de Lerp
             }
         }
+    }
+    private IEnumerator HideShowTextAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        Subtitle.SetActive(false);
     }
 }

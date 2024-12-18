@@ -34,7 +34,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: 64448312dc5034f93aae3554e726e354, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-<<<<<<< HEAD
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 2, y: 2}
@@ -51,15 +50,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-=======
->>>>>>> b02ce0af6749770fdb1551b0e5e429bc2b4c9c03
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 29b378d081ca9421285d862f7405d6c5, type: 3}
         m_Scale: {x: 1.8, y: 1.73}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-<<<<<<< HEAD
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -78,9 +74,6 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-=======
-    - _BumpScale: 30
->>>>>>> b02ce0af6749770fdb1551b0e5e429bc2b4c9c03
     - _Metallic: 0
     - _Smoothness: 0.44
     m_Colors: []
