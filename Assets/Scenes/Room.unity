@@ -969,8 +969,9 @@ GameObject:
   - component: {fileID: 807338009}
   - component: {fileID: 807338008}
   - component: {fileID: 807338007}
+  - component: {fileID: 807338011}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,6 +1066,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &807338011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807338006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4370f9e0b0116194f8e92a8b887b54f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  sceneName: CityTest
+  useTrigger: 1
+  actionKey: 101
 --- !u!1 &832678226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,8 +1367,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2213290131413320808, guid: b914331deb356a8438d2123450d4b34a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2450261765297198111, guid: b914331deb356a8438d2123450d4b34a, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450261765297198111, guid: b914331deb356a8438d2123450d4b34a, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5061432860930445914, guid: b914331deb356a8438d2123450d4b34a, type: 3}
