@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30362f7442ecb5d42b55fdc89a8eabc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 7300899686760288015, guid: dde8637d40e0b9a48b04a8e195cf43a9, type: 3}
+  objectToSpawn: {fileID: 3795134059199196096, guid: 62a3fb832574bea47881bd7d0521fe20, type: 3}
   numberOfObjects: 5
   spawnAreaSize: {x: 12, y: 5}
   checkRadius: 0.5
